@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0b;
+  --surface: #141416;
+  --surface-elevated: #1c1c1f;
+  --border: #26262a;
+  --border-strong: #32323a;
+  --fg: #fafafa;
+  --fg-muted: #a1a1a8;
+  --fg-subtle: #6b6b72;
+  --positive: #3fe0a0;
+  --negative: #ff5a5f;
+  --warning: #f5a623;
+  --accent: #3fe0a0;
+}
+
+html.light {
+  --background: #fafaf8;
+  --surface: #ffffff;
+  --surface-elevated: #f3f3f0;
+  --border: #e4e4e0;
+  --border-strong: #d0d0ca;
+  --fg: #0a0a0b;
+  --fg-muted: #52525b;
+  --fg-subtle: #8a8a92;
+  --positive: #0b9a6a;
+  --negative: #d83a3f;
+  --warning: #c17912;
+  --accent: #0b9a6a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-warning: var(--warning);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace,
+    monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono,
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "zero";
+}
+
+.data-refresh {
+  transition: opacity 120ms ease;
+}
+
+/* Scrollbar — terminal-style */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Recharts dark text */
+.recharts-cartesian-axis-tick-value {
+  fill: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.recharts-default-tooltip {
+  background: var(--surface-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+}
+.recharts-tooltip-item {
+  color: var(--fg) !important;
+  font-family: var(--font-mono);
+}
