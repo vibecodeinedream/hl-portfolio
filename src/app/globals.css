@@ -8,7 +8,7 @@
   --border-strong: #32323a;
   --fg: #fafafa;
   --fg-muted: #a1a1a8;
-  --fg-subtle: #6b6b72;
+  --fg-subtle: #8a8a92;
   --positive: #3fe0a0;
   --negative: #ff5a5f;
   --warning: #f5a623;
@@ -71,6 +71,13 @@ body {
   font-feature-settings: "tnum", "zero";
 }
 
+.hero-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum", "zero", "lnum";
+  letter-spacing: -0.01em;
+}
+
 .data-refresh {
   transition: opacity 120ms ease;
 }
@@ -93,7 +100,7 @@ body {
 
 /* Recharts dark text */
 .recharts-cartesian-axis-tick-value {
-  fill: var(--fg-subtle);
+  fill: var(--fg-muted);
   font-family: var(--font-mono);
   font-size: 11px;
 }

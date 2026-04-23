@@ -14,7 +14,7 @@ import { DialogTrigger } from "@/components/ui/dialog";
 import { WalletDialog } from "@/components/wallets/wallet-dialog";
 import { useWallets, type Wallet } from "@/lib/store/wallets";
 import { useAggregate } from "@/lib/hooks/use-aggregate";
-import { fmtUSD, shortAddr } from "@/lib/utils/format";
+import { fmtUSD } from "@/lib/utils/format";
 
 export function WalletStrip() {
   const wallets = useWallets((s) => s.wallets);
@@ -45,20 +45,18 @@ export function WalletStrip() {
               className="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
               style={{ background: w.color }}
             />
-            <div className="flex min-w-0 flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="truncate text-xs font-medium text-[var(--fg)]">
-                  {w.label}
-                </span>
-                {err && (
-                  <AlertTriangle className="h-3 w-3 text-[var(--warning)]" />
-                )}
-              </div>
-              <span className="mono text-[10px] text-[var(--fg-subtle)]">
-                {shortAddr(w.address)}
+            <div className="flex min-w-0 items-center gap-1.5">
+              <span
+                className="truncate text-sm font-medium text-[var(--fg)]"
+                title={w.address}
+              >
+                {w.label}
               </span>
+              {err && (
+                <AlertTriangle className="h-3 w-3 text-[var(--warning)]" />
+              )}
             </div>
-            <div className="mono ml-2 text-right text-xs text-[var(--fg-muted)]">
+            <div className="hero-num ml-2 text-right text-sm text-[var(--fg)]">
               {summary ? fmtUSD(total, { compact: true }) : "—"}
             </div>
             <Switch

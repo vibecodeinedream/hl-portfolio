@@ -11,7 +11,7 @@ function Delta({ n, className }: { n: number; className?: string }) {
   const color =
     n > 0 ? "text-[var(--positive)]" : n < 0 ? "text-[var(--negative)]" : "text-[var(--fg-muted)]";
   return (
-    <span className={cn("mono", color, className)}>
+    <span className={cn("hero-num", color, className)}>
       {sign}
       {fmtUSD(n)}
     </span>
@@ -31,10 +31,10 @@ export function SummaryCards() {
           <CardTitle>Total Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {isLoading ? <Skeleton className="h-8 w-24" /> : fmtUSD(s.totalValue, { compact: true })}
           </div>
-          <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
+          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
               Perp <span className="mono text-[var(--fg-muted)]">{fmtUSD(s.totalPerpValue, { compact: true })}</span>
             </span>
@@ -51,7 +51,7 @@ export function SummaryCards() {
         </CardHeader>
         <CardContent>
           <Delta n={s.totalUnrealizedPnl} className="text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem]" />
-          <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
+          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
               ROE <span className={cn(
                 "mono",
@@ -67,10 +67,10 @@ export function SummaryCards() {
           <CardTitle>Position Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalPositionValue, { compact: true })}
           </div>
-          <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
+          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
               Leverage <span className="mono text-[var(--fg-muted)]">{s.weightedLeverage.toFixed(2)}x</span>
             </span>
@@ -83,10 +83,10 @@ export function SummaryCards() {
           <CardTitle>Withdrawable</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalWithdrawable, { compact: true })}
           </div>
-          <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
+          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
               Margin used{" "}
               <span className={cn(
@@ -105,11 +105,11 @@ export function SummaryCards() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {s.activeWallets}
             <span className="text-[var(--fg-subtle)]"> / {s.totalWallets}</span>
           </div>
-          <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
+          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>enabled of total</span>
           </div>
         </CardContent>

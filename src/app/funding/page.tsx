@@ -195,25 +195,25 @@ export default function FundingPage() {
                 No funding events in window.
               </div>
             ) : (
-              <table className="w-full min-w-[620px] text-xs">
+              <table className="w-full min-w-[620px] text-[13px]">
                 <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
                   <tr>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Time
                     </th>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Wallet
                     </th>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Coin
                     </th>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Side
                     </th>
-                    <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Rate
                     </th>
-                    <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Payment
                     </th>
                   </tr>
@@ -227,12 +227,12 @@ export default function FundingPage() {
                     return (
                       <tr
                         key={`${e.walletId}:${e.hash}:${e.time}:${e.delta.coin}`}
-                        className="border-b border-[var(--border)]/60"
+                        className="border-b border-[var(--border)]/60 even:bg-[var(--surface-elevated)]/25 hover:bg-[var(--surface-elevated)]/50"
                       >
-                        <td className="mono px-3 py-2 text-[var(--fg-muted)]">
+                        <td className="mono px-3 py-2.5 text-[var(--fg-muted)]">
                           {fmtDateTime(e.time)}
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-3 py-2.5">
                           <div className="flex items-center gap-1.5">
                             <span
                               className="inline-block h-2 w-2 rounded-full"
@@ -241,16 +241,16 @@ export default function FundingPage() {
                             <span className="text-[var(--fg-muted)]">{e.walletLabel}</span>
                           </div>
                         </td>
-                        <td className="px-3 py-2 font-medium text-[var(--fg)]">{e.delta.coin}</td>
-                        <td className="px-3 py-2">
+                        <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{e.delta.coin}</td>
+                        <td className="px-3 py-2.5">
                           <Badge variant={side === "LONG" ? "long" : "short"}>{side}</Badge>
                         </td>
-                        <td className="mono px-3 py-2 text-right text-[var(--fg-muted)]">
+                        <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
                           {fmtPct(rate * 100, 4, true)}
                         </td>
                         <td
                           className={cn(
-                            "mono px-3 py-2 text-right",
+                            "mono px-3 py-2.5 text-right",
                             usdc > 0
                               ? "text-[var(--positive)]"
                               : usdc < 0

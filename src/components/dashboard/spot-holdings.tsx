@@ -56,22 +56,22 @@ export function SpotHoldings() {
                 {showDust ? "No spot balances." : "No spot balances above $1. Toggle dust to see all."}
               </div>
             ) : (
-              <table className="w-full min-w-[580px] text-xs">
+              <table className="w-full min-w-[580px] text-[13px]">
                 <thead className="border-b border-[var(--border)]">
                   <tr>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Wallet
                     </th>
-                    <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Coin
                     </th>
-                    <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       Balance
                     </th>
-                    <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       USD Value
                     </th>
-                    <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+                    <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
                       % of Spot
                     </th>
                   </tr>
@@ -84,10 +84,10 @@ export function SpotHoldings() {
                         key={`${s.walletId}:${s.rawCoin}:${i}`}
                         className={cn(
                           "border-b border-[var(--border)]/60",
-                          "hover:bg-[var(--surface-elevated)]/50",
+                          "even:bg-[var(--surface-elevated)]/25 hover:bg-[var(--surface-elevated)]/50",
                         )}
                       >
-                        <td className="px-3 py-2">
+                        <td className="px-3 py-2.5">
                           <div className="flex items-center gap-1.5">
                             <span
                               className="inline-block h-2 w-2 rounded-full"
@@ -98,14 +98,14 @@ export function SpotHoldings() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-3 py-2 font-medium text-[var(--fg)]">{s.coin}</td>
-                        <td className="mono px-3 py-2 text-right text-[var(--fg)]">
+                        <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{s.coin}</td>
+                        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
                           {fmtNum(s.total, 6)}
                         </td>
-                        <td className="mono px-3 py-2 text-right text-[var(--fg)]">
+                        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
                           {fmtUSD(s.usdValue)}
                         </td>
-                        <td className="mono px-3 py-2 text-right text-[var(--fg-muted)]">
+                        <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
                           {fmtPct(pct, 1)}
                         </td>
                       </tr>

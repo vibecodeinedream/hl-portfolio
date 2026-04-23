@@ -235,34 +235,34 @@ export default function FillsPage() {
 
 function FillsTable({ fills }: { fills: DecoratedFill[] }) {
   return (
-    <table className="w-full min-w-[780px] text-xs">
+    <table className="w-full min-w-[780px] text-[13px]">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
-          <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Time
           </th>
-          <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Wallet
           </th>
-          <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Coin
           </th>
-          <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Side
           </th>
-          <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Price
           </th>
-          <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Size
           </th>
-          <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Notional
           </th>
-          <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Fee
           </th>
-          <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">
+          <th className="px-3 py-2.5 text-right text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Closed P&amp;L
           </th>
         </tr>
@@ -279,12 +279,12 @@ function FillsTable({ fills }: { fills: DecoratedFill[] }) {
           return (
             <tr
               key={`${f.walletId}:${f.tid}:${f.hash}`}
-              className="border-b border-[var(--border)]/60"
+              className="border-b border-[var(--border)]/60 even:bg-[var(--surface-elevated)]/25 hover:bg-[var(--surface-elevated)]/50"
             >
-              <td className="mono px-3 py-2 text-[var(--fg-muted)]">
+              <td className="mono px-3 py-2.5 text-[var(--fg-muted)]">
                 {fmtDateTime(f.time)}
               </td>
-              <td className="px-3 py-2">
+              <td className="px-3 py-2.5">
                 <div className="flex items-center gap-1.5">
                   <span
                     className="inline-block h-2 w-2 rounded-full"
@@ -293,20 +293,20 @@ function FillsTable({ fills }: { fills: DecoratedFill[] }) {
                   <span className="text-[var(--fg-muted)]">{f.walletLabel}</span>
                 </div>
               </td>
-              <td className="px-3 py-2 font-medium text-[var(--fg)]">{f.coin}</td>
-              <td className="px-3 py-2">
+              <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{f.coin}</td>
+              <td className="px-3 py-2.5">
                 <div className="flex items-center gap-1">
                   <Badge variant={buy ? "long" : "short"}>{buy ? "BUY" : "SELL"}</Badge>
                   <Badge variant="subtle">{isClose ? "CLOSE" : "OPEN"}</Badge>
                 </div>
               </td>
-              <td className="mono px-3 py-2 text-right text-[var(--fg)]">{fmtPrice(px)}</td>
-              <td className="mono px-3 py-2 text-right text-[var(--fg)]">{fmtSize(sz)}</td>
-              <td className="mono px-3 py-2 text-right text-[var(--fg)]">{fmtUSD(notional)}</td>
-              <td className="mono px-3 py-2 text-right text-[var(--fg-muted)]">{fmtUSD(fee)}</td>
+              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtPrice(px)}</td>
+              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtSize(sz)}</td>
+              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtUSD(notional)}</td>
+              <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">{fmtUSD(fee)}</td>
               <td
                 className={cn(
-                  "mono px-3 py-2 text-right",
+                  "mono px-3 py-2.5 text-right",
                   closed > 0
                     ? "text-[var(--positive)]"
                     : closed < 0
