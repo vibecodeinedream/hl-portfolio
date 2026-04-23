@@ -1,22 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Nav } from "@/components/layout/nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans-ui",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmMono = DM_Mono({
+  variable: "--font-mono-ui",
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +37,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${dmMono.variable} h-full antialiased`}
     >
       <head>
         <script
