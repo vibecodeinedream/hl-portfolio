@@ -31,7 +31,7 @@ export function SummaryCards() {
           <CardTitle>Total Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-[1.75rem] font-semibold leading-none tracking-tight text-[var(--fg)]">
+          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {isLoading ? <Skeleton className="h-8 w-24" /> : fmtUSD(s.totalValue, { compact: true })}
           </div>
           <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
@@ -50,7 +50,7 @@ export function SummaryCards() {
           <CardTitle>Unrealized P&amp;L</CardTitle>
         </CardHeader>
         <CardContent>
-          <Delta n={s.totalUnrealizedPnl} className="text-[1.75rem] font-semibold leading-none tracking-tight" />
+          <Delta n={s.totalUnrealizedPnl} className="text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem]" />
           <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
             <span>
               ROE <span className={cn(
@@ -67,7 +67,7 @@ export function SummaryCards() {
           <CardTitle>Position Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-[1.75rem] font-semibold leading-none tracking-tight text-[var(--fg)]">
+          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalPositionValue, { compact: true })}
           </div>
           <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
@@ -83,7 +83,7 @@ export function SummaryCards() {
           <CardTitle>Withdrawable</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-[1.75rem] font-semibold leading-none tracking-tight text-[var(--fg)]">
+          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalWithdrawable, { compact: true })}
           </div>
           <div className="mt-2 flex gap-3 text-[11px] text-[var(--fg-subtle)]">
@@ -105,7 +105,7 @@ export function SummaryCards() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mono text-[1.75rem] font-semibold leading-none tracking-tight text-[var(--fg)]">
+          <div className="mono text-xl font-semibold leading-tight tracking-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {s.activeWallets}
             <span className="text-[var(--fg-subtle)]"> / {s.totalWallets}</span>
           </div>

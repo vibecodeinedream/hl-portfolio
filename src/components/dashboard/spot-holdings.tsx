@@ -56,7 +56,7 @@ export function SpotHoldings() {
                 {showDust ? "No spot balances." : "No spot balances above $1. Toggle dust to see all."}
               </div>
             ) : (
-              <table className="w-full text-xs">
+              <table className="w-full min-w-[580px] text-xs">
                 <thead className="border-b border-[var(--border)]">
                   <tr>
                     <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">

@@ -195,7 +195,7 @@ export default function FundingPage() {
                 No funding events in window.
               </div>
             ) : (
-              <table className="w-full text-xs">
+              <table className="w-full min-w-[620px] text-xs">
                 <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
                   <tr>
                     <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-[var(--fg-subtle)]">

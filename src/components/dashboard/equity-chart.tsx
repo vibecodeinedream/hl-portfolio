@@ -63,11 +63,11 @@ export function EquityChart() {
 
   return (
     <Card className="flex flex-col">
-      <CardHeader className="flex flex-row items-start justify-between">
+      <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <CardTitle>Account Value</CardTitle>
-          <div className="mt-1 flex items-baseline gap-3">
-            <span className="mono text-2xl font-semibold text-[var(--fg)]">
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="mono text-xl font-semibold text-[var(--fg)] sm:text-2xl">
               {fmtUSD(lastVal, { compact: true })}
             </span>
             {hydrated && firstVal > 0 && (
@@ -84,7 +84,7 @@ export function EquityChart() {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           <div className="flex rounded-md border border-[var(--border)] p-0.5">
             {(["combined", "perWallet"] as Mode[]).map((m) => (
               <button

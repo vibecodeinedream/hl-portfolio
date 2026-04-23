@@ -44,7 +44,7 @@ export function Nav() {
                 )}
               >
                 <Icon className="h-3.5 w-3.5" />
-                <span>{t.label}</span>
+                <span className="hidden sm:inline">{t.label}</span>
               </Link>
             );
           })}

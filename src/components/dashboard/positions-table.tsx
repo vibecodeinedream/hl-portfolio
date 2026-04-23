@@ -181,7 +181,7 @@ function FlatTable({
   onSort: (k: SortKey) => void;
 }) {
   return (
-    <table className="w-full text-xs">
+    <table className="w-full min-w-[900px] text-xs">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
           <th className="w-6 px-3"></th>
@@ -394,7 +394,7 @@ function GroupedTable({
   onSort: (k: SortKey) => void;
 }) {
   return (
-    <table className="w-full text-xs">
+    <table className="w-full min-w-[900px] text-xs">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
           <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
