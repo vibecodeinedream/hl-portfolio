@@ -86,8 +86,9 @@ html.privacy .money {
   user-select: none;
   pointer-events: none;
 }
-html.privacy .recharts-yAxis .recharts-cartesian-axis-tick-value,
-html.privacy .recharts-default-tooltip {
+html.privacy .recharts-cartesian-axis-tick-value,
+html.privacy .recharts-default-tooltip,
+html.privacy .recharts-tooltip-wrapper {
   filter: blur(6px);
   user-select: none;
 }
