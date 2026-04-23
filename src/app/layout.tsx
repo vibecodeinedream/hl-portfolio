@@ -1,22 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Nav } from "@/components/layout/nav";
-
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-sans-ui",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-mono-ui",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "HL Portfolio",
@@ -37,9 +22,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${jakarta.variable} ${dmMono.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap"
+        />
         <script
           // Avoid flash of wrong theme. Runs before paint.
           dangerouslySetInnerHTML={{

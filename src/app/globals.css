@@ -43,9 +43,9 @@ html.light {
   --color-negative: var(--negative);
   --color-warning: var(--warning);
   --color-accent: var(--accent);
-  --font-sans: var(--font-sans-ui), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
-  --font-mono: var(--font-mono-ui), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono: "Satoshi", ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
