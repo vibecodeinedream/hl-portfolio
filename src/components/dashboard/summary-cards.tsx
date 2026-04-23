@@ -25,7 +25,7 @@ export function SummaryCards() {
   if (!hydrated) return <SummaryCardsSkeleton />;
 
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
       <Card>
         <CardHeader>
           <CardTitle>Total Value</CardTitle>
@@ -70,28 +70,15 @@ export function SummaryCards() {
           <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalPositionValue, { compact: true })}
           </div>
-          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
+          <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--fg-muted)]">
             <span>
               Leverage <span className="mono text-[var(--fg-muted)]">{s.weightedLeverage.toFixed(2)}x</span>
             </span>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Withdrawable</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
-            {fmtUSD(s.totalWithdrawable, { compact: true })}
-          </div>
-          <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
               Margin used{" "}
               <span className={cn(
                 "mono",
-                s.marginUsagePct > 70 ? "text-[var(--warning)]" : s.marginUsagePct > 90 ? "text-[var(--negative)]" : "text-[var(--fg-muted)]",
+                s.marginUsagePct > 90 ? "text-[var(--negative)]" : s.marginUsagePct > 70 ? "text-[var(--warning)]" : "text-[var(--fg-muted)]",
               )}>{fmtPct(s.marginUsagePct, 1)}</span>
             </span>
           </div>
@@ -120,8 +107,8 @@ export function SummaryCards() {
 
 function SummaryCardsSkeleton() {
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-      {Array.from({ length: 5 }).map((_, i) => (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      {Array.from({ length: 4 }).map((_, i) => (
         <Card key={i}>
           <CardHeader>
             <Skeleton className="h-3 w-16" />
