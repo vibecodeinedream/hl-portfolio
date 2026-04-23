@@ -16,14 +16,14 @@
 }
 
 html.light {
-  --background: #fafaf8;
-  --surface: #ffffff;
-  --surface-elevated: #f3f3f0;
-  --border: #e4e4e0;
-  --border-strong: #d0d0ca;
-  --fg: #0a0a0b;
-  --fg-muted: #52525b;
-  --fg-subtle: #8a8a92;
+  --background: #f3ead5;
+  --surface: #faf3df;
+  --surface-elevated: #ebe0c6;
+  --border: #ddd2b5;
+  --border-strong: #c4b897;
+  --fg: #2a241a;
+  --fg-muted: #6b6251;
+  --fg-subtle: #968b74;
   --positive: #0b9a6a;
   --negative: #d83a3f;
   --warning: #c17912;
