@@ -181,20 +181,19 @@ function FlatTable({
   onSort: (k: SortKey) => void;
 }) {
   return (
-    <table className="w-full min-w-[720px] lg:min-w-[900px] text-[13px]">
+    <table className="w-full min-w-[680px] text-[13px]">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
           <th className="w-6 px-3"></th>
-          <SortHeader label="Wallet" k="wallet" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
+          <SortHeader label="Wallet" k="wallet" className="w-full" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
             Side
           </th>
-          <SortHeader label="Size" k="size" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="Mark" k="mark" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Coin" k="coin" className="whitespace-nowrap" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Value" k="value" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="uPNL" k="pnl" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Mark" k="mark" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="ROE" k="roe" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Liq" k="liq" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Lev" k="leverage" align="right" className="hidden lg:table-cell" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
@@ -267,19 +266,10 @@ function FlatRow({
             <span className="truncate text-[var(--fg-muted)]">{p.walletLabel}</span>
           </div>
         </td>
-        <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{p.coin}</td>
         <td className="px-3 py-2.5">
           <Badge variant={p.side === "LONG" ? "long" : "short"}>{p.side}</Badge>
         </td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
-          {fmtSize(Math.abs(p.sz))}
-        </td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
-          {fmtPrice(p.entryPx)}
-        </td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
-          {fmtPrice(p.markPx)}
-        </td>
+        <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{p.coin}</td>
         <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
           {fmtUSD(p.positionValue, { compact: true })}
         </td>
@@ -294,6 +284,12 @@ function FlatRow({
           )}
         >
           {fmtUSD(p.unrealizedPnl, { sign: true })}
+        </td>
+        <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
+          {fmtPrice(p.entryPx)}
+        </td>
+        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+          {fmtPrice(p.markPx)}
         </td>
         <td
           className={cn(
@@ -338,7 +334,7 @@ function FlatRow({
       {isOpen && (
         <tr className="border-b border-[var(--border)]/60 bg-[var(--surface-elevated)]/30">
           <td></td>
-          <td colSpan={12} className="px-3 py-3">
+          <td colSpan={11} className="px-3 py-3">
             <dl className="grid grid-cols-2 gap-2 text-[11px] md:grid-cols-4">
               <Detail label="Margin used" value={fmtUSD(p.marginUsed)} />
               <Detail label="Size (signed)" value={fmtNum(p.sz, 4)} />
@@ -401,21 +397,20 @@ function GroupedTable({
   onSort: (k: SortKey) => void;
 }) {
   return (
-    <table className="w-full min-w-[720px] lg:min-w-[900px] text-[13px]">
+    <table className="w-full min-w-[680px] text-[13px]">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
-          <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
             Side
           </th>
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
-            Wallets
-          </th>
-          <SortHeader label="Size" k="size" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="Avg Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="Mark" k="mark" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Coin" k="coin" className="w-full" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Value" k="value" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="uPNL" k="pnl" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
+            Wallets
+          </th>
+          <SortHeader label="Avg Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Mark" k="mark" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
         </tr>
       </thead>
       <tbody>
@@ -424,7 +419,6 @@ function GroupedTable({
             key={r.coin}
             className="border-b border-[var(--border)]/60 hover:bg-[var(--surface-elevated)]/50"
           >
-            <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{r.coin}</td>
             <td className="px-3 py-2.5">
               <Badge
                 variant={
@@ -434,30 +428,7 @@ function GroupedTable({
                 {r.side}
               </Badge>
             </td>
-            <td className="px-3 py-2.5">
-              <div className="flex items-center gap-1">
-                {r.contributors.map((c) => (
-                  <div
-                    key={c.walletId}
-                    title={`${c.walletLabel}: ${fmtUSD(c.positionValue, { compact: true })}`}
-                    className="inline-block h-2 w-2 rounded-full"
-                    style={{ background: c.walletColor }}
-                  />
-                ))}
-                <span className="ml-1 text-[10px] text-[var(--fg-subtle)]">
-                  {r.contributors.length}
-                </span>
-              </div>
-            </td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
-              {fmtSize(r.netSz)}
-            </td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
-              {fmtPrice(r.entryPx)}
-            </td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
-              {fmtPrice(r.markPx)}
-            </td>
+            <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{r.coin}</td>
             <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
               {fmtUSD(r.positionValue, { compact: true })}
             </td>
@@ -472,6 +443,27 @@ function GroupedTable({
               )}
             >
               {fmtUSD(r.unrealizedPnl, { sign: true })}
+            </td>
+            <td className="px-3 py-2.5">
+              <div className="flex items-center gap-1">
+                {r.contributors.map((c) => (
+                  <div
+                    key={c.walletId}
+                    title={`${c.walletLabel}: ${fmtUSD(c.positionValue, { compact: true })}`}
+                    className="inline-block h-2 w-2 rounded-full"
+                    style={{ background: c.walletColor }}
+                  />
+                ))}
+                <span className="ml-1 text-[11px] text-[var(--fg-subtle)]">
+                  {r.contributors.length}
+                </span>
+              </div>
+            </td>
+            <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
+              {fmtPrice(r.entryPx)}
+            </td>
+            <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+              {fmtPrice(r.markPx)}
             </td>
           </tr>
         ))}
