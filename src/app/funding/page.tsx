@@ -94,7 +94,7 @@ export default function FundingPage() {
             <CardTitle>Received</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="mono text-2xl font-semibold text-[var(--positive)]">
+            <div className="mono money text-2xl font-semibold text-[var(--positive)]">
               {fmtUSD(received, { sign: true })}
             </div>
           </CardContent>
@@ -104,7 +104,7 @@ export default function FundingPage() {
             <CardTitle>Paid</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="mono text-2xl font-semibold text-[var(--negative)]">
+            <div className="mono money text-2xl font-semibold text-[var(--negative)]">
               {fmtUSD(paid, { sign: true })}
             </div>
           </CardContent>
@@ -116,7 +116,7 @@ export default function FundingPage() {
           <CardContent>
             <div
               className={cn(
-                "mono text-2xl font-semibold",
+                "mono money text-2xl font-semibold",
                 net > 0
                   ? "text-[var(--positive)]"
                   : net < 0
@@ -250,7 +250,7 @@ export default function FundingPage() {
                         </td>
                         <td
                           className={cn(
-                            "mono px-3 py-2.5 text-right",
+                            "mono money px-3 py-2.5 text-right",
                             usdc > 0
                               ? "text-[var(--positive)]"
                               : usdc < 0

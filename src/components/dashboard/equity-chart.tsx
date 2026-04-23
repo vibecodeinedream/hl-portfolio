@@ -67,13 +67,13 @@ export function EquityChart() {
         <div>
           <CardTitle>Account Value</CardTitle>
           <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="mono text-xl font-semibold text-[var(--fg)] sm:text-2xl">
+            <span className="mono money text-xl font-semibold text-[var(--fg)] sm:text-2xl">
               {fmtUSD(lastVal, { compact: true })}
             </span>
             {hydrated && firstVal > 0 && (
               <span
                 className={cn(
-                  "mono text-xs",
+                  "mono money text-xs",
                   delta >= 0 ? "text-[var(--positive)]" : "text-[var(--negative)]",
                 )}
               >

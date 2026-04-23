@@ -9,9 +9,11 @@ type SettingsStore = {
   theme: Theme;
   refreshMs: RefreshCadence;
   pauseWhenHidden: boolean;
+  privacy: boolean;
   setTheme: (t: Theme) => void;
   setRefreshMs: (ms: RefreshCadence) => void;
   setPauseWhenHidden: (v: boolean) => void;
+  togglePrivacy: () => void;
 };
 
 export const useSettings = create<SettingsStore>()(
@@ -20,9 +22,11 @@ export const useSettings = create<SettingsStore>()(
       theme: "dark",
       refreshMs: 5_000,
       pauseWhenHidden: true,
+      privacy: false,
       setTheme: (t) => set({ theme: t }),
       setRefreshMs: (ms) => set({ refreshMs: ms }),
       setPauseWhenHidden: (v) => set({ pauseWhenHidden: v }),
+      togglePrivacy: () => set((s) => ({ privacy: !s.privacy })),
     }),
     {
       name: "hl-settings",

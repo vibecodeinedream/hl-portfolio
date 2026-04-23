@@ -148,7 +148,7 @@ export default function FillsPage() {
               Closed P&amp;L{" "}
               <span
                 className={cn(
-                  "mono text-sm",
+                  "mono money text-sm",
                   closedPnlTotal > 0
                     ? "text-[var(--positive)]"
                     : closedPnlTotal < 0
@@ -161,7 +161,7 @@ export default function FillsPage() {
             </span>
             <span>
               Fees{" "}
-              <span className="mono text-sm text-[var(--fg-muted)]">
+              <span className="mono money text-sm text-[var(--fg-muted)]">
                 {fmtUSD(feeTotal)}
               </span>
             </span>
@@ -169,7 +169,7 @@ export default function FillsPage() {
               Net{" "}
               <span
                 className={cn(
-                  "mono text-sm",
+                  "mono money text-sm",
                   closedPnlTotal - feeTotal > 0
                     ? "text-[var(--positive)]"
                     : closedPnlTotal - feeTotal < 0
@@ -300,13 +300,13 @@ function FillsTable({ fills }: { fills: DecoratedFill[] }) {
                   <Badge variant="subtle">{isClose ? "CLOSE" : "OPEN"}</Badge>
                 </div>
               </td>
-              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtPrice(px)}</td>
-              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtSize(sz)}</td>
-              <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">{fmtUSD(notional)}</td>
-              <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">{fmtUSD(fee)}</td>
+              <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">{fmtPrice(px)}</td>
+              <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">{fmtSize(sz)}</td>
+              <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">{fmtUSD(notional)}</td>
+              <td className="mono money px-3 py-2.5 text-right text-[var(--fg-muted)]">{fmtUSD(fee)}</td>
               <td
                 className={cn(
-                  "mono px-3 py-2.5 text-right",
+                  "mono money px-3 py-2.5 text-right",
                   closed > 0
                     ? "text-[var(--positive)]"
                     : closed < 0

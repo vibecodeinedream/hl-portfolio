@@ -185,11 +185,11 @@ function FlatTable({
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
           <th className="w-6 px-3"></th>
-          <SortHeader label="Wallet" k="wallet" className="w-full" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
+          <SortHeader label="Wallet" k="wallet" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Side
           </th>
-          <SortHeader label="Coin" k="coin" className="whitespace-nowrap" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Value" k="value" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="uPNL" k="pnl" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
@@ -270,12 +270,12 @@ function FlatRow({
           <Badge variant={p.side === "LONG" ? "long" : "short"}>{p.side}</Badge>
         </td>
         <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{p.coin}</td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+        <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
           {fmtUSD(p.positionValue, { compact: true })}
         </td>
         <td
           className={cn(
-            "mono px-3 py-2.5 text-right",
+            "mono money px-3 py-2.5 text-right",
             p.unrealizedPnl > 0
               ? "text-[var(--positive)]"
               : p.unrealizedPnl < 0
@@ -285,15 +285,15 @@ function FlatRow({
         >
           {fmtUSD(p.unrealizedPnl, { sign: true })}
         </td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
+        <td className="mono money px-3 py-2.5 text-right text-[var(--fg-muted)]">
           {fmtPrice(p.entryPx)}
         </td>
-        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+        <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
           {fmtPrice(p.markPx)}
         </td>
         <td
           className={cn(
-            "mono px-3 py-2.5 text-right",
+            "mono money px-3 py-2.5 text-right",
             p.roePct > 0
               ? "text-[var(--positive)]"
               : p.roePct < 0
@@ -305,7 +305,7 @@ function FlatRow({
         </td>
         <td
           className={cn(
-            "mono px-3 py-2.5 text-right",
+            "mono money px-3 py-2.5 text-right",
             liqDanger ? "text-[var(--negative)]" : "text-[var(--fg-muted)]",
           )}
         >
@@ -400,13 +400,13 @@ function GroupedTable({
     <table className="w-full min-w-[680px] text-[13px]">
       <thead className="border-b border-[var(--border)] bg-[var(--surface)]">
         <tr>
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Side
           </th>
-          <SortHeader label="Coin" k="coin" className="w-full" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Value" k="value" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="uPNL" k="pnl" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)] whitespace-nowrap">
+          <th className="px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
             Wallets
           </th>
           <SortHeader label="Avg Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
@@ -429,12 +429,12 @@ function GroupedTable({
               </Badge>
             </td>
             <td className="px-3 py-2.5 font-medium text-[var(--fg)]">{r.coin}</td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+            <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
               {fmtUSD(r.positionValue, { compact: true })}
             </td>
             <td
               className={cn(
-                "mono px-3 py-2.5 text-right",
+                "mono money px-3 py-2.5 text-right",
                 r.unrealizedPnl > 0
                   ? "text-[var(--positive)]"
                   : r.unrealizedPnl < 0
@@ -459,10 +459,10 @@ function GroupedTable({
                 </span>
               </div>
             </td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
+            <td className="mono money px-3 py-2.5 text-right text-[var(--fg-muted)]">
               {fmtPrice(r.entryPx)}
             </td>
-            <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+            <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
               {fmtPrice(r.markPx)}
             </td>
           </tr>

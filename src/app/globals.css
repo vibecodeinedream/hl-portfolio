@@ -79,6 +79,19 @@ body {
   letter-spacing: -0.01em;
 }
 
+/* Privacy mode — blurs dollar values. Percentages, sizes, and mids remain visible. */
+html.privacy .money {
+  filter: blur(7px);
+  transition: filter 120ms ease;
+  user-select: none;
+  pointer-events: none;
+}
+html.privacy .recharts-yAxis .recharts-cartesian-axis-tick-value,
+html.privacy .recharts-default-tooltip {
+  filter: blur(6px);
+  user-select: none;
+}
+
 .data-refresh {
   transition: opacity 120ms ease;
 }

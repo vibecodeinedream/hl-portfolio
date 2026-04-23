@@ -11,7 +11,7 @@ function Delta({ n, className }: { n: number; className?: string }) {
   const color =
     n > 0 ? "text-[var(--positive)]" : n < 0 ? "text-[var(--negative)]" : "text-[var(--fg-muted)]";
   return (
-    <span className={cn("hero-num", color, className)}>
+    <span className={cn("hero-num money", color, className)}>
       {sign}
       {fmtUSD(n)}
     </span>
@@ -31,15 +31,15 @@ export function SummaryCards() {
           <CardTitle>Total Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num money text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {isLoading ? <Skeleton className="h-8 w-24" /> : fmtUSD(s.totalValue, { compact: true })}
           </div>
           <div className="mt-2 flex gap-3 text-xs text-[var(--fg-muted)]">
             <span>
-              Perp <span className="mono text-[var(--fg-muted)]">{fmtUSD(s.totalPerpValue, { compact: true })}</span>
+              Perp <span className="mono money text-[var(--fg-muted)]">{fmtUSD(s.totalPerpValue, { compact: true })}</span>
             </span>
             <span>
-              Spot <span className="mono text-[var(--fg-muted)]">{fmtUSD(s.spotUsdValue, { compact: true })}</span>
+              Spot <span className="mono money text-[var(--fg-muted)]">{fmtUSD(s.spotUsdValue, { compact: true })}</span>
             </span>
           </div>
         </CardContent>
@@ -67,7 +67,7 @@ export function SummaryCards() {
           <CardTitle>Position Value</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="hero-num text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
+          <div className="hero-num money text-xl font-semibold leading-tight sm:text-[1.5rem] md:text-[1.75rem] text-[var(--fg)]">
             {fmtUSD(s.totalPositionValue, { compact: true })}
           </div>
           <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--fg-muted)]">

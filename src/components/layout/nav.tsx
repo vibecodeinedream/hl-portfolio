@@ -5,6 +5,7 @@ import { Activity, CircleDollarSign, LayoutDashboard, Settings } from "lucide-re
 import { cn } from "@/lib/utils/cn";
 import { ThemeToggle } from "./theme-toggle";
 import { LastUpdated } from "./last-updated";
+import { PrivacyToggle } from "./privacy-toggle";
 import { SettingsDrawer } from "@/components/settings/settings-drawer";
 
 const TABS = [
@@ -48,6 +49,7 @@ export function Nav() {
               </Link>
             );
           })}
+          <PrivacyToggle />
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <LastUpdated />

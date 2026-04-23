@@ -34,7 +34,7 @@ export default function RootLayout({
         <script
           // Avoid flash of wrong theme. Runs before paint.
           dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const t=localStorage.getItem('hl-theme')||'dark';if(t==='light')document.documentElement.classList.add('light');}catch(e){}})();`,
+            __html: `(()=>{try{const t=localStorage.getItem('hl-theme')||'dark';if(t==='light')document.documentElement.classList.add('light');const s=localStorage.getItem('hl-settings');if(s){const j=JSON.parse(s);if(j&&j.state&&j.state.privacy)document.documentElement.classList.add('privacy');}}catch(e){}})();`,
           }}
         />
       </head>

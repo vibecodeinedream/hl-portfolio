@@ -56,7 +56,7 @@ export function WalletStrip() {
                 <AlertTriangle className="h-3 w-3 text-[var(--warning)]" />
               )}
             </div>
-            <div className="hero-num ml-2 text-right text-sm text-[var(--fg)]">
+            <div className="hero-num money ml-2 text-right text-sm text-[var(--fg)]">
               {summary ? fmtUSD(total, { compact: true }) : "—"}
             </div>
             <Switch

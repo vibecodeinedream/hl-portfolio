@@ -34,7 +34,7 @@ export function SpotHoldings() {
             <ChevronRight className="h-3 w-3 text-[var(--fg-subtle)]" />
           )}
           <CardTitle>Spot Holdings</CardTitle>
-          <span className="mono text-xs text-[var(--fg)]">
+          <span className="mono money text-xs text-[var(--fg)]">
             {fmtUSD(total, { compact: true })}
           </span>
           <span className="text-[10px] text-[var(--fg-subtle)]">
@@ -102,7 +102,7 @@ export function SpotHoldings() {
                         <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
                           {fmtNum(s.total, 6)}
                         </td>
-                        <td className="mono px-3 py-2.5 text-right text-[var(--fg)]">
+                        <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
                           {fmtUSD(s.usdValue)}
                         </td>
                         <td className="mono px-3 py-2.5 text-right text-[var(--fg-muted)]">
