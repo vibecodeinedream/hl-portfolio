@@ -144,7 +144,7 @@ export function EquityChart() {
 
   return (
     <Card className="flex flex-col">
-      <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+      <CardHeader className="flex flex-row items-start justify-between gap-3">
         <div>
           <CardTitle>
             {metric === "pnl" ? "Perps P&L" : "Account Value"}
@@ -175,7 +175,7 @@ export function EquityChart() {
             )}
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-1">
+        <div className="flex flex-wrap items-start justify-end gap-1">
           <div className="flex rounded-md border border-[var(--border)] p-0.5">
             {(["pnl", "value"] as Metric[]).map((m) => (
               <button
