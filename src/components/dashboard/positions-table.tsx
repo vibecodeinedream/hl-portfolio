@@ -192,9 +192,9 @@ function FlatTable({
           <SortHeader label="Coin" k="coin" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Value" k="value" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="uPNL" k="pnl" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
+          <SortHeader label="ROE" k="roe" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Entry" k="entry" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Mark" k="mark" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
-          <SortHeader label="ROE" k="roe" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Liq" k="liq" align="right" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Lev" k="leverage" align="right" className="hidden lg:table-cell" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
           <SortHeader label="Funding" k="funding" align="right" className="hidden lg:table-cell" sortKey={sortKey} sortDir={sortDir} onSort={onSort} />
@@ -285,15 +285,9 @@ function FlatRow({
         >
           {fmtUSD(p.unrealizedPnl, { sign: true })}
         </td>
-        <td className="mono money px-3 py-2.5 text-right text-[var(--fg-muted)]">
-          {fmtPrice(p.entryPx)}
-        </td>
-        <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
-          {fmtPrice(p.markPx)}
-        </td>
         <td
           className={cn(
-            "mono money px-3 py-2.5 text-right",
+            "mono px-3 py-2.5 text-right",
             p.roePct > 0
               ? "text-[var(--positive)]"
               : p.roePct < 0
@@ -302,6 +296,12 @@ function FlatRow({
           )}
         >
           {fmtPct(p.roePct, 2, true)}
+        </td>
+        <td className="mono money px-3 py-2.5 text-right text-[var(--fg-muted)]">
+          {fmtPrice(p.entryPx)}
+        </td>
+        <td className="mono money px-3 py-2.5 text-right text-[var(--fg)]">
+          {fmtPrice(p.markPx)}
         </td>
         <td
           className={cn(
