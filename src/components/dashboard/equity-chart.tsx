@@ -13,6 +13,13 @@ import { useAggregate } from "@/lib/hooks/use-aggregate";
 import { mergeEquityCurves } from "@/lib/hyperliquid/aggregate";
 import type { PortfolioPeriod } from "@/lib/hyperliquid/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { fmtUSD } from "@/lib/utils/format";
 import { cn } from "@/lib/utils/cn";
 
@@ -208,22 +215,21 @@ export function EquityChart() {
               </button>
             ))}
           </div>
-          <div className="flex rounded-md border border-[var(--border)] p-0.5">
-            {PERIODS.map((p) => (
-              <button
-                key={p.key}
-                onClick={() => setPeriodKey(p.key)}
-                className={cn(
-                  "rounded px-2 py-0.5 text-[11px] transition-colors mono",
-                  periodKey === p.key
-                    ? "bg-[var(--surface-elevated)] text-[var(--fg)]"
-                    : "text-[var(--fg-muted)] hover:text-[var(--fg)]",
-                )}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
+          <Select
+            value={periodKey}
+            onValueChange={(v) => setPeriodKey(v as WindowKey)}
+          >
+            <SelectTrigger className="h-7 w-[88px] px-2 text-[11px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {PERIODS.map((p) => (
+                <SelectItem key={p.key} value={p.key}>
+                  {p.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </CardHeader>
 
