@@ -182,20 +182,56 @@ export function getPeriodData(
   return entry?.[1] ?? null;
 }
 
-// Merge accountValueHistory across wallets using step-function forward-fill.
+// Merge a portfolio time-series across wallets using step-function forward-fill.
 // All timestamps from enabled wallets are collected, sorted. For each ts, each wallet's
 // value is the most recent sample <= ts, or 0 if none yet.
+//
+// `cutoffTs` (optional): drop samples older than this timestamp. For each wallet, the most
+// recent pre-cutoff value is carried forward as a synthetic sample at exactly cutoffTs so
+// the chart's left edge is anchored to the cutoff (e.g. exactly 24h ago for the 1D view).
+//
+// `field` (optional, default 'accountValueHistory'): which series in PortfolioData to read.
+// Use 'pnlHistory' for cumulative-PnL charts.
 export function mergeEquityCurves(
   snapshots: WalletSnapshot[],
   period: PortfolioPeriod,
+  cutoffTs?: number,
+  field: "accountValueHistory" | "pnlHistory" = "accountValueHistory",
 ): EquityPoint[] {
   const series = snapshots
     .filter((s) => s.wallet.enabled && s.portfolio)
     .map((s) => {
       const data = getPeriodData(s.portfolio, period);
-      const hist: [number, number][] = (data?.accountValueHistory ?? [])
+      const sorted: [number, number][] = (data?.[field] ?? [])
         .map(([ts, v]) => [ts, parseNum(v)] as [number, number])
         .sort((a, b) => a[0] - b[0]);
+      let hist = sorted;
+      if (cutoffTs !== undefined) {
+        // Find the last value at or before cutoff to use as the anchor.
+        let anchor: number | null = null;
+        const inWindow: [number, number][] = [];
+        for (const [ts, v] of sorted) {
+          if (ts < cutoffTs) {
+            anchor = v;
+          } else {
+            inWindow.push([ts, v]);
+          }
+        }
+        // Prepend a synthetic sample at exactly cutoffTs so the left edge is
+        // anchored to the requested window start, not whenever the first
+        // in-window sample happens to land.
+        if (anchor !== null && (inWindow.length === 0 || inWindow[0][0] > cutoffTs)) {
+          inWindow.unshift([cutoffTs, anchor]);
+        }
+        // Append a synthetic sample at "now" carrying forward the most recent
+        // value, so the line reaches the right edge of the chart instead of
+        // ending wherever HL's last historical sample happens to be.
+        const now = Date.now();
+        if (inWindow.length > 0 && inWindow[inWindow.length - 1][0] < now) {
+          inWindow.push([now, inWindow[inWindow.length - 1][1]]);
+        }
+        hist = inWindow;
+      }
       return { id: s.wallet.id, hist };
     })
     .filter((x) => x.hist.length > 0);
